@@ -1,0 +1,13 @@
+.not-found__container {
+  width: 100%;
+  height: calc(100vh - 200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.not-found__wrap {
+  font-size: 2rem;
+  box-shadow: 3px 5px 15px 3px #01061c;
+  padding: 0 5rem;
+  color: white;
+}
