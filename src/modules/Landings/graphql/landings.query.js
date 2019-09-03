@@ -5,6 +5,7 @@ export function refetchData(data, fetchMore, setLoadlandings, loadMore) {
       after: data.landings.list[data.landings.list.length - 1].id,
     },
     updateQuery: (previousResult, { fetchMoreResult, ...rest }) => {
+      console.log(fetchMoreResult)
       if (!fetchMoreResult) {
         return previousResult
       }

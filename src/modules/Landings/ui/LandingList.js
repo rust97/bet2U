@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react'
+import { useStore } from 'effector-react'
 import { LANDINGS_DATA } from '../graphql/landings.gql'
 import { useQuery } from 'react-apollo-hooks'
 import { refetchData, timeToUpdate } from '../graphql/landings.query'
 import Landing from '../components/Landing'
 import LandingsFilter from '../components/LandingsFilter'
 import Spinner from '../../../components/Spinner'
+import { $category } from '../model/store.landings'
 import './Landings.scss'
 
 const LandingList = () => {
   const [load, loadMore] = useState(true)
   const [loadLandings, setLoadlandings] = useState(false)
-  const [category, setCategory] = useState('sport')
+  const category = useStore($category)
 
   useEffect(() => {
     window.addEventListener('scroll', updateRes)
@@ -48,12 +50,7 @@ const LandingList = () => {
         <div className="title__wrap">
           <h1 className="content__title">Landings</h1>
         </div>
-        <LandingsFilter
-          category={category}
-          setCategory={setCategory}
-          loading={loading}
-          refetch={refetch}
-        />
+        <LandingsFilter loading={loading} refetch={refetch} />
         {landingList}
         {loadLandings ? <Spinner /> : null}
       </div>

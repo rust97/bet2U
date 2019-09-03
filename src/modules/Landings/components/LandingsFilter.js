@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useStore } from 'effector-react'
+import { setCategory, $category } from '../model/store.landings'
 
 const filterArr = ['sport', 'casino']
 
-const LandingsFilter = ({ setCategory, category, loading, refetch }) => {
+const LandingsFilter = ({ loading, refetch }) => {
+  const category = useStore($category)
   useEffect(() => {
     if (!loading) {
       setActive(category)
-      refetch()
+      // refetch()
     }
   }, [loading, category, refetch])
 
