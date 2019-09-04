@@ -27,6 +27,7 @@ const LandingList = () => {
       category: category,
     },
     suspend: false,
+    partialRefetch: false,
   })
 
   const updateRes = () => {
@@ -40,6 +41,10 @@ const LandingList = () => {
     }
   }
 
+  const changeCategory = () => {
+    refetchData(data, fetchMore, setLoadlandings, loadMore)
+  }
+
   if (!loading) {
     const landingList = data.landings.list.map((item, i) => {
       return <Landing key={item.id} item={item} i={i} />
@@ -50,7 +55,11 @@ const LandingList = () => {
         <div className="title__wrap">
           <h1 className="content__title">Landings</h1>
         </div>
-        <LandingsFilter loading={loading} refetch={refetch} />
+        <LandingsFilter
+          loading={loading}
+          refetch={refetch}
+          changeCategory={changeCategory}
+        />
         {landingList}
         {loadLandings ? <Spinner /> : null}
       </div>

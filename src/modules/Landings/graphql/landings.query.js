@@ -17,6 +17,7 @@ export function refetchData(data, fetchMore, setLoadlandings, loadMore) {
             ...previousResult.landings.list,
             ...fetchMoreResult.landings.list,
           ],
+          nextPage: fetchMoreResult.landings.nextPage,
         },
       }
     },
