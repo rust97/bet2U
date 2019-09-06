@@ -2,6 +2,11 @@
   max-width: 50%;
   overflow: hidden;
   position: relative;
+  @media (max-width: 1020px) {
+    max-width: 100% !important;
+    width: 100% !important;
+    
+  }
   @media (max-width: 700px) {
     max-width: 100% !important;
     width: 100% !important;
@@ -48,7 +53,7 @@
     transition: all 0.2s;
     cursor: pointer;
     text-decoration: none;
-    @media (max-width: 700px) {
+    @media (max-width: 1020px) {
       display: none;
     }
   }
@@ -83,9 +88,15 @@
     z-index: 200;
     text-transform: uppercase;
     transform: translateX(-50%);
+    @media (max-width: 1020px) {
+      width: 675px !important;
+      font-size: 85px !important;
+      top: 30%;
+    }
     @media (max-width: 700px) {
       width: 300px !important;
       font-size: 55px !important;
+      top: 15% !important;
     }
   }
 }
@@ -110,6 +121,10 @@
       border-radius: 10px;
       transition: transform 0.3s ease-in-out;
       cursor: pointer;
+      @media (max-width: 700px) {
+        width: 280px !important;
+        height: 320px !important;
+      }
       @media (max-width: 700px) {
         width: 170px !important;
         height: 195px !important;

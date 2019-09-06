@@ -24,9 +24,11 @@ export default function ReviewForm() {
 
   const validation = e => {
     e.preventDefault()
-    const validName = name.match(/^\S[a-zа-я0-9_]+/i)
-    const validText = text.match(/^\S[a-zа-я0-9_]+/i)
-    if (verify && validName && validText) {
+    const validName = /[\<\>\{\}\[\]]/gi.test(name)
+    const validText = /[\<\>\{\}\[\]]/gi.test(text)
+    console.log(validText, validName)
+
+    if (verify && !validName && !validText) {
       postReview()
         .then(res => {
           setNotification('thank you, your submition has been received')
@@ -35,10 +37,10 @@ export default function ReviewForm() {
           setHide(true)
         })
         .catch(err => console.log(err))
-    } else if (!validName) {
+    } else if (validName) {
       setNotification('"Name/Organization" field  was filed incorrect')
       setHide(true)
-    } else if (!validText) {
+    } else if (validText) {
       setNotification('"Your review" field  was filed incorrect')
       setHide(true)
     } else return null
