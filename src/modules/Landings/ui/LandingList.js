@@ -6,13 +6,15 @@ import { refetchData, timeToUpdate } from '../graphql/landings.query'
 import Landing from '../components/Landing'
 import LandingsFilter from '../components/LandingsFilter'
 import Spinner from '../../../components/Spinner'
-import { $category } from '../model/store.landings'
+import { $category, $landingsLang } from '../model/store.landings'
+import LandingsFilterLangs from '../components/LandingsFilterLangs'
 import './Landings.scss'
 
-const LandingList = () => {
+const LandingList = ({ lang }) => {
   const [load, loadMore] = useState(true)
   const [loadLandings, setLoadlandings] = useState(false)
   const category = useStore($category)
+  const landingsLang = useStore($landingsLang)
 
   useEffect(() => {
     window.addEventListener('scroll', updateRes)
@@ -21,9 +23,9 @@ const LandingList = () => {
 
   const { data, loading, fetchMore, refetch } = useQuery(LANDINGS_DATA, {
     variables: {
-      lang: 'EN',
+      lang: lang,
       first: 7,
-      after: 0,
+      after: 100000,
       category: category,
     },
     suspend: false,
@@ -55,11 +57,8 @@ const LandingList = () => {
         <div className="title__wrap">
           <h1 className="content__title">Landings</h1>
         </div>
-        <LandingsFilter
-          loading={loading}
-          refetch={refetch}
-          changeCategory={changeCategory}
-        />
+        <LandingsFilterLangs lang={lang} />
+        <LandingsFilter loading={loading} changeCategory={changeCategory} />
         {landingList}
         {loadLandings ? <Spinner /> : null}
       </div>

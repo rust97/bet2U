@@ -17,7 +17,7 @@ const Routes = {
   '/banners': () => <BannerList />,
   '/faq': () => <FAQ />,
   '/t&c': () => <Content section="t&c" />,
-  '/landings': () => <LandingList />,
+  '/landings/:lang': ({ lang }) => <LandingList lang={lang} />,
   '/revenue-share': () => <Content section="revenue-share" />,
   '/cpa': () => <Content section="cpa" />,
   '/hybrid': () => <Content section="hybrid" />,

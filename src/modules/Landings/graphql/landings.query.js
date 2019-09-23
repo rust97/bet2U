@@ -1,8 +1,13 @@
 export function refetchData(data, fetchMore, setLoadlandings, loadMore) {
+  let after =
+    data.landings.list.length !== 0
+      ? data.landings.list[data.landings.list.length - 1].id
+      : 100000
+
   setLoadlandings(true)
   fetchMore({
     variables: {
-      after: data.landings.list[data.landings.list.length - 1].id,
+      after: after,
     },
     updateQuery: (previousResult, { fetchMoreResult, ...rest }) => {
       console.log(fetchMoreResult)

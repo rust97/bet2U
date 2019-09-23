@@ -180,7 +180,7 @@ const Header = () => {
                   </A>{' '}
                 </li>
                 <li>
-                  <A onClick={() => mobileClick()} href="/landings">
+                  <A onClick={() => mobileClick()} href="/landings/EN">
                     Landings
                   </A>{' '}
                 </li>
