@@ -49,7 +49,6 @@ const Countries = () => {
   }
 
   if (!loading) {
-    console.log(data.countries)
     const recommended = data.countries.filter(item => {
       if (item.title === 'Recomended countries') {
         return item
@@ -178,10 +177,3 @@ const Countries = () => {
 }
 
 export default Countries
-
-// <CountryList
-//   key={item.title}
-//   countries={item.countries}
-//   title={item.title}
-//   showList={showList}
-// />

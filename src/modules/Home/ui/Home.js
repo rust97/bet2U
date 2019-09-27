@@ -82,7 +82,7 @@ export default function Home() {
         title="Landing pages"
         img1={landing1}
         img2={landing2}
-        link="/landings"
+        link="/landings/EN"
         id="#previewLandings"
       />
       <PreviewPromo

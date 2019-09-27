@@ -32,7 +32,6 @@ const BannersList = () => {
   }
 
   if (!loading) {
-    console.log(data)
     return (
       <div className="banners__wrap">
         <div className="title__wrap">
